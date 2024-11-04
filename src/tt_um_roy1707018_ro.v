@@ -24,8 +24,8 @@ module tt_um_roy1707018_ro (
 
 
      // Signals to activate the ring oscillators and store their outputs
-    wire [31:0] ro1_out;   // Output from the first 32 ROs
-    wire [31:0] ro2_out;   // Output from the second 32 ROs
+    wire [15:0] ro1_out;   // Output from the first 32 ROs
+    wire [15:0] ro2_out;   // Output from the second 32 ROs
 
     // Instantiate the ro_only module
     ring_osc_buffer u_ro_only (
@@ -39,6 +39,7 @@ module tt_um_roy1707018_ro (
 
     // Output the selected 8 bits to uo_out
    // assign uo_out = selected_count;
+    assign uo_out[7:0] = 8'b0;
     assign uio_out = 0;
     assign uio_oe = 0;
 
