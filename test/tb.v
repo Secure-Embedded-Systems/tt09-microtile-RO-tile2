@@ -31,7 +31,7 @@ module tb ();
   assign vgnd = 1'b0;
 
   // Instantiate the module
-  tt_um_roy1707018_ro22 user_project (
+  tt_um_roy1707018_ro2 user_project (
 
     // Include power ports for the Gate Level test:
     `ifdef GL_TEST
