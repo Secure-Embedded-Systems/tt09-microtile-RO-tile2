@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-module tt_um_roy1707018_tdc (
+module tt_um_roy1707018_ro (
 
 	      // Include power ports for the Gate Level test:
 `ifdef GL_TEST
@@ -23,23 +23,22 @@ module tt_um_roy1707018_tdc (
 );
 
 
-    localparam N_DELAY = 16;
-    
-    // Delayed clock signal
-    wire delayed_clk;
-    wire inverted_clk; 
-    // Assign the inverted value of clk to inverted_clk
-     assign inverted_clk = ~clk;
+     // Signals to activate the ring oscillators and store their outputs
+    wire [31:0] ro1_out;   // Output from the first 32 ROs
+    wire [31:0] ro2_out;   // Output from the second 32 ROs
 
-    // Instantiate the sensor module
-    sensor #(
-        .N_DELAY(16) // Set the number of inverter stages
-    ) sensor_inst (
-        .clk(inverted_clk),
-        .delayed_clk(delayed_clk)
+    // Instantiate the ro_only module
+    ring_osc_buffer u_ro_only (
+        .rst_n(rst_n),
+        .clk(clk),
+        .ro_activate_1(ui_in[0]),  // Use ui_in[0] to activate RO1 set
+        .ro_activate_2(ui_in[1]),  // Use ui_in[1] to activate RO2 set
+        .ro1_out(ro1_out),
+        .ro2_out(ro2_out)
     );
-     assign uo_out[0] = inverted_clk;
-    assign uo_out[1] = delayed_clk;
+
+    // Output the selected 8 bits to uo_out
+   // assign uo_out = selected_count;
     assign uio_out = 0;
     assign uio_oe = 0;
 
