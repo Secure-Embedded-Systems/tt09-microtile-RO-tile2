@@ -13,7 +13,7 @@
 
   "//": "PL_TARGET_DENSITY - You can increase this if Global Placement fails with error GPL-0302.",
   "//": "Users have reported that values up to 0.8 worked well for them.",
-  "PL_TARGET_DENSITY": 0.7,
+  "PL_TARGET_DENSITY": 0.6,
 
   "//": "CLOCK_PERIOD - Increase this in case you are getting setup time violations.",
   "//": "The value is in nanoseconds, so 20ns == 50MHz.",
@@ -30,16 +30,6 @@
   "//": "If you need a custom clock configuration, read the following documentation first:",
   "//": "https://tinytapeout.com/faq/#how-can-i-map-an-additional-external-clock-to-one-of-the-gpios",
   "CLOCK_PORT": "clk",
-
-  "RUN_IRDROP_REPORT": "0",
-  "ERROR_ON_LVS_ERROR": false,
-
-  "FP_PDN_HORIZONTAL_HALO": 1,
-  "FP_PDN_VERTICAL_HALO": 1,
-  "FP_TAP_HORIZONTAL_HALO": 1,
-  "FP_TAP_VERTICAL_HALO": 1,
-  "FP_PDN_HORIZONTAL_LAYER": "met2",
-
 
   "//": "Configuration docs: https://openlane.readthedocs.io/en/latest/reference/configuration.html",
 
@@ -58,10 +48,10 @@
   "SYNTH_READ_BLACKBOX_LIB": 1,
 
   "//": "Reduce wasted space",
-  "TOP_MARGIN_MULT": 2,
+  "TOP_MARGIN_MULT": 1,
   "BOTTOM_MARGIN_MULT": 1,
   "LEFT_MARGIN_MULT": 6,
-  "RIGHT_MARGIN_MULT": 12,
+  "RIGHT_MARGIN_MULT": 6,
 
   "//": "Absolute die size",
   "FP_SIZING": "absolute",
@@ -75,6 +65,7 @@
   "FP_PDN_VOFFSET": 1.04,
   "FP_PDN_VPITCH": 16,
   "FP_PDN_VSPACING": 6.4,
+  "FP_PDN_VERTICAL_LAYER": "met2",
 
   "//": "Use alternative efabless decap cells to solve LI density issue",
   "DECAP_CELL": [
@@ -88,9 +79,9 @@
   "//": "Clock",
   "RUN_CTS": 1,
 
-  "//": "Don't use power rings or met5 layer",
+  "//": "Use up to met2 layer",
   "DESIGN_IS_CORE": 0,
-  "RT_MAX_LAYER": "met4",
+  "RT_MAX_LAYER": "met2",
 
   "//": "MAGIC_DEF_LABELS may cause issues with LVS",
   "MAGIC_DEF_LABELS": 0,

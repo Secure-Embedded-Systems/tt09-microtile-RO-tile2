@@ -1,23 +1,18 @@
-/*
- * Copyright (c) 2024 Your Name
- * SPDX-License-Identifier: Apache-2.0
- */
-
 `default_nettype none
 
 module tt_um_roy1707018_ro2 (
 
-	      // Include power ports for the Gate Level test:
+              // Include power ports for the Gate Level test:
 `ifdef GL_TEST
       .VPWR(vpwr),
       .VGND(vgnd),
 `endif
     input  wire [7:0] ui_in,    // Dedicated inputs (we'll use ui_in[1:0] for mux control)
     output wire [7:0] uo_out,   // Dedicated outputs (8-bit output of time count)
-    input  wire [7:0] uio_in,   // IOs: Input path
-    output wire [7:0] uio_out,  // IOs: Output path
-    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
-    input  wire       ena,      // Don't use (used for power gating)
+   // input  wire [7:0] uio_in,   // IOs: Input path
+   // output wire [7:0] uio_out,  // IOs: Output path
+    //output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+    //input  wire       ena,      // Don't use (used for power gating)
     input  wire       clk,      // System clock
     input  wire       rst_n     // Active-low reset
 );
@@ -40,12 +35,12 @@ module tt_um_roy1707018_ro2 (
     // Output the selected 8 bits to uo_out
    // assign uo_out = selected_count;
     assign uo_out[7:0] = 8'b0;
-    assign uio_out = 0;
-    assign uio_oe = 0;
+    //assign uio_out = 0;
+    //assign uio_oe = 0;
 
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, uio_in, 1'b0};
+  //wire _unused = &{ena, uio_in, 1'b0};
 
 
 
@@ -54,3 +49,4 @@ module tt_um_roy1707018_ro2 (
 
 
 endmodule
+                                 
