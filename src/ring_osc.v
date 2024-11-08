@@ -15,7 +15,7 @@ module ring_osc(input wire  rst_n,
    
    assign ro_out = en ? q : 1'b0;
    
-   always @(posedge clk or posedge rst_n) begin
+   always @(posedge clk or negedge rst_n) begin
     if (!rst_n)
         en <= 1'b0;
     else if (ro_activate)
