@@ -3,14 +3,14 @@ module ring_osc_buffer (
     input wire clk,
     input wire ro_activate_1,
     input wire ro_activate_2,
-    output wire [7:0] ro1_out,  // Outputs from 16 ROs in RO1
-    output wire [7:0] ro2_out   // Outputs from 16 ROs in RO2
+    output wire [15:0] ro1_out,  // Outputs from 16 ROs in RO1
+    output wire [15:0] ro2_out   // Outputs from 16 ROs in RO2
 );
 
    // Instantiate 16 ROs for each set (RO1 and RO2), totaling 32 ROs
    genvar i;
    generate
-       for (i = 0; i <8 ; i = i + 1) begin : ro_gen
+       for (i = 0; i <16 ; i = i + 1) begin : ro_gen
            // RO1 instantiation
            ring_osc ro1 (
                .rst_n(rst_n),
